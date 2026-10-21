@@ -157,8 +157,11 @@ class MirrorJoints(QtWidgets.QWidget):
 
             # 1. Collect nodes TOP-DOWN
             if self.qrb_hierarchy.isChecked():
-                all_nodes = cmds.listRelatives(sel[0], ad=True, f=True) or []
-                nodes = [cmds.ls(sel[0], l=True)[0]] + list(reversed(all_nodes))
+                nodes = []
+                for each in sel:
+                    children = cmds.listRelatives(sel, ad=True, f=True) or []
+                    nodes.append(each)
+                    nodes += children
             else:
                 nodes = cmds.ls(sel, l=True)
 
