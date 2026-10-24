@@ -1,4 +1,4 @@
-__author__ = "Rémi CUXAC"
+__author__ = "Remi CUXAC"
 
 try:
     from PySide2 import QtWidgets
